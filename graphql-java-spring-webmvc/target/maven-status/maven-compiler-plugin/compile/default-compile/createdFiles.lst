@@ -1,0 +1,7 @@
+graphql\spring\web\servlet\components\DefaultGraphQLInvocation.class
+graphql\spring\web\servlet\GraphQLInvocationData.class
+graphql\spring\web\servlet\components\GraphQLController.class
+graphql\spring\web\servlet\components\GraphQLRequestBody.class
+graphql\spring\web\servlet\GraphQLInvocation.class
+graphql\spring\web\servlet\ExecutionResultHandler.class
+graphql\spring\web\servlet\components\DefaultExecutionResultHandler.class
