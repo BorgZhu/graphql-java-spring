@@ -14,9 +14,9 @@
             <version>2.1.4.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>graphql-java</groupId>
+            <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java</artifactId>
-            <version>1.0</version>
+            <version>11.0</version>
         </dependency>
     </dependencies>
     <modules>

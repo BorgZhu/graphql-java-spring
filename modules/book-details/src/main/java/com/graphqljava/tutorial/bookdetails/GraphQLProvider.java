@@ -2,6 +2,7 @@ package com.graphqljava.tutorial.bookdetails;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import graphql.GraphQL;
+import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 @Component
@@ -46,9 +48,14 @@ public class GraphQLProvider {
     }
 
     private RuntimeWiring buildWiring() {
+        HashMap<String, DataFetcher> dataFetcherMap=new HashMap(2);
+        dataFetcherMap.put("bookById",graphQLDataFetchers.getBookByIdDataFetcher());
+        dataFetcherMap.put("authorById",graphQLDataFetchers.getAuthorByIdDataFetcher());
+
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
-                        .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher()))
+                        .dataFetchers(dataFetcherMap))
+
                 .type(newTypeWiring("Book")
                         .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher()))
                 .build();
